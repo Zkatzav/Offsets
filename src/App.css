@@ -1,0 +1,21 @@
+* {
+  /* margin: 3%; */
+  background: lightsteelblue;
+}
+
+.App {
+  text-align: center;
+}
+#container {
+  margin-top: 5vh; 
+}
+.profile {
+  display: grid;
+  justify-content: center;
+  margin: auto;
+  background: "#f4f4f4";
+  /* padding: "20px" */
+}
+img {
+  justify-self: center
+}
