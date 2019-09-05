@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react'
-import User from './stores/UserStore';
+import user from './stores/UserStore';
 
-let user = new User()
+// let user = new User()
 let stores = {user}
 
 ReactDOM.render(<Provider {...stores}><App /></Provider>, document.getElementById('root'));

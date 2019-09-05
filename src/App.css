@@ -1,5 +1,5 @@
-* {
-  /* margin: 3%; */
+body {
+  margin: 3%;
   background: lightsteelblue;
 }
 
@@ -7,7 +7,7 @@
   text-align: center;
 }
 #container {
-  margin-top: 5vh; 
+  /* margin-top: 5vh;  */
 }
 .profile {
   display: grid;
@@ -17,5 +17,82 @@
   /* padding: "20px" */
 }
 img {
-  justify-self: center
+  object-fit: fill;
+  /* justify-self: center */
+}
+
+.select-party {
+  margin: 5%;  
+}
+
+.friends {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr;
+  /* background: lawngreen */
+}
+.friend {
+  margin-right: 40%;
+  margin: auto;
+}
+label {
+  width: 40vw;
+  background: plum;
+  border: solid 0.5px palevioletred;
+  border-radius: 30px 
+  /* font-family:  */
+}
+
+/* .avatar {
+  object-fit: fill;
+  vertical-align: middle;
+  width: 25vw;
+  height: 14vh;
+  border-radius: 50%;
+} */
+
+.avatar {
+  margin: 2%;
+  cursor: pointer;
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50%;
+}
+.havoda {
+  cursor: pointer;
+  background: url('../src/imges/havoda.png')  no-repeat center;
+  background-size: contain;
+  background-color:white;
+}
+.biteno {
+  background: url('../src/imges/biteno.png')  no-repeat center;
+  background-size: contain;
+  background-color:#050577ec;
+}
+.kholavan {
+  background: url('../src/imges/kholavan.png');
+  background-size: contain;  
+}
+.licud {
+  background: url('../src/imges/licud.png') no-repeat center;
+  background-size: contain;
+  background-color:white;  
+}
+.sach {
+  background: url('./imges/sach.png') no-repeat center;
+  background-size: 70%;  
+  background-color:white;
+}
+h4{
+}
+
+.logo-signup {
+  position: absolute;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  
 }

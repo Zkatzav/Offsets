@@ -1,45 +1,53 @@
 import React, { Component } from 'react'
 import FacebookLogin from 'react-facebook-login'
 import { observer, inject } from 'mobx-react'
-import Carrousel from './Carrousel';
-// import { async } from 'q';
+import Friend from './Friend'
+// import SelectParty from './SelectParty'
+// import axios from 'axios'
+import logo from '../logo_offsets.png'
+import { async } from 'q'
+import axios from 'axios'
+
 
 @inject("user")
 @observer
 class Facebook extends Component {
   state = {
-    isLoggedIn: false,
+    fbLoggedIn: false,
     userID: '',
     name: '',
     email: '',
-    img: ''
   }
-
   componentClicked = () => console.log("clicked");
 
   responseFacebook = async response => {
-    // console.log(response);
+    let user = await axios.get(`http://localhost:4000/user/${response.userID}`)
     await this.setState({
-      isLoggedIn: true,
+      fbLoggedIn: true,
       userID: response.userID,
       name: response.name,
       email: response.email,
       picture: response.picture.data.url,
       friends: response.friends.data,
+      userExists: user ? true : false
     });
-    this.props.user.setUserFriends(this.state.friends)
-  };
+    localStorage.setItem("name", response.name)
+    localStorage.setItem("fbID", response.userID)
+  }
   render() {
     let fbContent;
-    if (this.state.isLoggedIn) {
-      fbContent = (
-        <div className="profile">
-          <img src={this.state.picture} alt={this.state.name} />
-          <h6>Welcome {this.state.name}</h6>
-          <h5>Swipe friend to Offset with</h5>
-
-        </div>
-      )
+    if (this.state.fbLoggedIn) {
+      if (this.state.userExists) {
+          fbContent = (
+            <div className="profile">
+              <h6>Welcome {this.state.name}</h6>
+              <h5>Chose friend to Offset with</h5>
+              <div className="friends">{this.state.friends.map((f, i) => <Friend key={i} friend={f.name} />)}</div>
+            </div>
+          )
+      } else {
+        window.location = "/signup"
+      }
     } else {
       fbContent = (
         <div>
@@ -55,8 +63,8 @@ class Facebook extends Component {
     }
     return (
       <div id="container">
+        <img className="logo" width="50%" src={logo} alt="logo"></img>
         {fbContent}
-        <Carrousel />
       </div>
     )
   }

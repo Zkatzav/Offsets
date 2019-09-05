@@ -2,17 +2,18 @@ import { observable, action } from 'mobx'
 
 
 class User {
-  @observable name = ''
-  @observable friends = []
+  @observable name = ""
+  @observable fbID = ""
+  @observable party = ""
   @observable fitOffsets = []
 
-  @action setUserName = (name) => {
-    this.name = name   
-  }
-  @action setUserFriends = (friends) => {
-    this.friends = friends
-  }
+  @action setUserName (name) {
+    this.name = name 
+  }  
+  @action setfbID = (fbID) => this.fbID = fbID
+  @action setUserParty = (party) => this.party = party
+  @action setFitOffsets = (fitOffsets) => this.fitOffsets = fitOffsets
 }
 
 
-export default User
+export default new User ()
