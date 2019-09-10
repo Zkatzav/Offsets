@@ -11,6 +11,10 @@ import Offset from './components/Offset';
 @inject("user")
 @observer
 class App extends Component {
+  
+  componentDidMount = () => {
+
+  }
   render() {
     return (
       <div className="App">

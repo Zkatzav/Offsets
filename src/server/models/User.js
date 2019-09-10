@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
   name: String,
   fbID: String,
+  friends: [String],
   party: {myParty: String, offsetsParties: [String]}, 
   offset: String,
 })

@@ -1,68 +1,57 @@
 body {
-  margin: 3%;
+  /* margin: 3%; */
   background: lightsteelblue;
 }
-
 .App {
+  /* margin: 5%; */
+  display: grid;
+  align-content: center;
+  justify-content: center;
   text-align: center;
 }
 #container {
-  /* margin-top: 5vh;  */
+  display: grid;
+  justify-items: center
 }
 .profile {
+  margin: 10%;
   display: grid;
   justify-content: center;
-  margin: auto;
+  align-content: center;
   background: "#f4f4f4";
-  /* padding: "20px" */
 }
-img {
-  object-fit: fill;
-  /* justify-self: center */
-}
-
 .select-party {
   margin: 5%;  
 }
-
 .friends {
   display: grid;
-  align-content: center;
-  justify-items: center;
+  align-content: center; 
+  justify-content: center; 
   grid-template-columns: 1fr 1fr;
-  /* background: lawngreen */
 }
 .friend {
-  margin-right: 40%;
-  margin: auto;
+  margin: 5%;
+  display: grid; 
+  align-items: center;
+  justify-items: center 
 }
 label {
   width: 40vw;
   background: plum;
   border: solid 0.5px palevioletred;
   border-radius: 30px 
-  /* font-family:  */
 }
-
-/* .avatar {
-  object-fit: fill;
-  vertical-align: middle;
-  width: 25vw;
-  height: 14vh;
-  border-radius: 50%;
-} */
-
 .avatar {
   margin: 2%;
   cursor: pointer;
-  width: 20vw;
-  height: 20vw;
+  width: 17vw;
+  height: 17vw;
   border-radius: 50%;
 }
 .havoda {
   cursor: pointer;
   background: url('../src/imges/havoda.png')  no-repeat center;
-  background-size: contain;
+  background-size: 90%;
   background-color:white;
 }
 .biteno {
@@ -71,12 +60,12 @@ label {
   background-color:#050577ec;
 }
 .kholavan {
-  background: url('../src/imges/kholavan.png');
-  background-size: contain;  
+  background: url('../src/imges/kholavan.png') center;
+  background-size: 90%;  
 }
 .licud {
   background: url('../src/imges/licud.png') no-repeat center;
-  background-size: contain;
+  background-size: 90%;
   background-color:white;  
 }
 .sach {
@@ -84,15 +73,18 @@ label {
   background-size: 70%;  
   background-color:white;
 }
-h4{
+#signup-container {
+  margin-top: 10% 
 }
-
 .logo-signup {
   position: absolute;
-  bottom: 0;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
   right: 0;
+  left: 0;
+  bottom: 0;
+  margin-right: auto;
+  margin-left: auto;
   
+}
+.offsets-parties {
+  margin-bottom: 10%
 }
