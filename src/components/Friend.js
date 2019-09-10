@@ -1,22 +1,31 @@
-import React from 'react';
-// import FormGroup from '@material-ui/core/FormGroup';
+import React, { useState, useEffect } from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 // import { async } from 'q';
+import { observer, MobXProviderContext } from 'mobx-react'
+
+const useStores = () => React.useContext(MobXProviderContext)
 
 
- const Friend = (props) => {
-  const [state, setState] = React.useState({
+const Friend = observer((props) => {
+
+  const { user } = useStores()
+
+  const [state, setState] = useState({
     checked: false,
   });
-  const handleChange = name => async event => {
-    await setState({ ...state, [name]: event.target.checked });
-    console.log(state.checked)
-
+  const handleChange = name => event => {
+    setState({ ...state, [name]: event.target.checked });
   };
+  useEffect(() => {
+    if (state.checked) {
+      user.setFitOffsetName(props.friend)
+    } else {
+      user.setFitOffsetName('')
+    }
+  })
   return (
     <div className="friend">
-    {/* <FormGroup row> */}
       <FormControlLabel
         control={
           <Checkbox
@@ -24,13 +33,12 @@ import Checkbox from '@material-ui/core/Checkbox';
             onChange={handleChange('checked')}
             value="checked"
             color="primary"
-            />
+          />
         }
         label={props.friend}
       />
-    {/* </FormGroup> */}
     </div>
   );
-}
+})
 
 export default Friend

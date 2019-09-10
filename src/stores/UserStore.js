@@ -7,7 +7,7 @@ class User {
   @observable fbID = ""
   @observable party = ""
   @observable friends = []
-  @observable fitOffsets = []
+  @observable fitOffsetName = ''
 
   @action setUserName(name) {
     this.name = name
@@ -26,13 +26,12 @@ class User {
   @action setfbID = (fbID) => this.fbID = fbID
   @action setUserParty = (party) => this.party = party
   @action setFriend = async (friend) => {
-    
     let user = await axios.get(`http://localhost:4000/user/${friend.fbID}`)
     if (user.data.length > 0) {
       this.friends.push(friend)
     }
   }
-  @action setFitOffsets = (fitOffsets) => this.fitOffsets = fitOffsets
+  @action setFitOffsetName = (fitOffsetName) => this.fitOffsetName = fitOffsetName
 }
 
 

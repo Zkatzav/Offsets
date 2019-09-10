@@ -27,6 +27,7 @@ class Facebook extends Component {
       picture: response.picture.data.url,
       friends: response.friends.data,
       userExists: user.data.length > 0 ? true : false,
+      offset: user.data[0].offset
     });
     localStorage.setItem("name", response.name)
     localStorage.setItem("fbID", response.userID)
@@ -38,7 +39,9 @@ class Facebook extends Component {
         <img className="logo" width="50%" src={logo} alt="logo"></img>
         {this.state.fbLoggedIn ?
           this.state.userExists ?
-            window.location = "/select-offsets"
+            this.state.offset ?
+              <div>You Offsets with {this.state.offset}</div>
+              : window.location = "/select-offsets"
             : window.location = "/signup"
           : <FacebookLogin
             appId="708546032960295"
