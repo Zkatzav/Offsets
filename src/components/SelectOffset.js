@@ -4,9 +4,7 @@ import logo from '../logo_offsets.png'
 import { observer, MobXProviderContext } from 'mobx-react'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-// import { async } from 'q';
 import axios from 'axios'
-
 
 
 const useStores = () => React.useContext(MobXProviderContext)
@@ -14,6 +12,7 @@ const useStores = () => React.useContext(MobXProviderContext)
 const SelectOffset = observer(() => {
 
   const { user } = useStores()
+
   const useStyles = makeStyles(theme => ({
     button: {
       margin: theme.spacing(1),
@@ -28,15 +27,14 @@ const SelectOffset = observer(() => {
   const setUserName = () => {
     let userName = localStorage.name
     user.setUserName(userName)
-    console.log(user.name)
   }
   useEffect(() => {
     setFriends()
     setUserName()
   }, [])
-  const sendOffset = () => {
-    console.log(user.name)
-    axios.put(`http://localhost:4000/offset/${user.name}/${user.fitOffsetName}`)
+  const sendOffset = async() => {
+    await axios.put(`http://localhost:4000/offset/${user.name}/${user.fitOffsetName}`)
+    window.location = '/'
   }
   return (
     <div className="profile">
@@ -45,11 +43,13 @@ const SelectOffset = observer(() => {
       <h5>Chose friend to Offset with</h5>
       <div className="friends">
         {user.friends.map((f, i) =>
-          <Friend key={i} friend={f.name} />)}
+          <Friend key={i} friend={f.name} party={f.party} />)}
       </div>
+      <div>
       <Button onClick={() => sendOffset()} size="small" variant="contained" color="primary" className={useStyles.button}>
-        send
+        send offset
       </Button>
+      </div>
       <img className="logo-signup" width="20%" src={logo} alt="logo"></img>
     </div>
   )
