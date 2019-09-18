@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-// import { async } from 'q';
+import React, { useState } from 'react';
 import { observer, MobXProviderContext } from 'mobx-react'
+
 
 const useStores = () => React.useContext(MobXProviderContext)
 
@@ -11,34 +9,23 @@ const Friend = observer((props) => {
 
   const { user } = useStores()
 
-  const [state, setState] = useState({
-    checked: false,
-  });
-  const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
-  };
-  useEffect(() => {
-    if (state.checked) {
-      user.setFitOffsetName(props.friend)
-    } else {
-      user.setFitOffsetName('')
-    }
-  })
+  const [name, setName] = useState("")
+
+  const handleChange = async (e) => {
+    let name = e.target.name
+    await setName(props.friend)
+    await user.setFitOffsetName(name)
+  }
   return (
-    <div className="friend">
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={state.checked}
-            onChange={handleChange('checked')}
-            value="checked"
-            color="primary"
-          />
-        }
-        label={props.friend}
-      />
-    </div>
-  );
+      <button className="friend"
+      style={name === props.friend ? { borderColor: 'green' } : null}
+        type="button" name={props.friend}
+        onClick={handleChange}
+      >
+        <img className={`avatar ${props.party}`} alt="" />
+        <p>{props.friend}</p>
+      </button>
+  )
 })
 
 export default Friend

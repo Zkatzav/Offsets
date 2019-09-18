@@ -1,9 +1,7 @@
 body {
-  /* margin: 3%; */
   background: lightsteelblue;
 }
 .App {
-  /* margin: 5%; */
   display: grid;
   align-content: center;
   justify-content: center;
@@ -24,16 +22,20 @@ body {
   margin: 5%;  
 }
 .friends {
+  margin-bottom: 40px; 
   display: grid;
   align-content: center; 
   justify-content: center; 
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: repeat(); */
 }
 .friend {
-  margin: 5%;
-  display: grid; 
+  padding: 5%;
+  background: lightpink;
+  border: 3px groove;
+  border-radius: 6px; 
   align-items: center;
-  justify-items: center 
+  justify-items: center;
+  font-family: 'Roboto Mono', monospace;
 }
 label {
   width: 40vw;
@@ -46,7 +48,9 @@ label {
   cursor: pointer;
   width: 17vw;
   height: 17vw;
+  border: solid lightskyblue;
   border-radius: 50%;
+  border-width: 3px;
 }
 .havoda {
   cursor: pointer;
